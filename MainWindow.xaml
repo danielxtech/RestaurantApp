@@ -1,0 +1,118 @@
+﻿<Window x:Class="RestaurantApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:RestaurantApp.ViewModels"
+        xmlns:views="clr-namespace:RestaurantApp.Views"
+        Title="Restaurant App" Height="600" Width="900">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/ThemeResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- View templates -->
+            <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+                <views:MenuView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:CartViewModel}">
+                <views:CartView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ReservationViewModel}">
+                <views:ReservationView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:PaymentViewModel}">
+                <views:PaymentView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AdminViewModel}">
+                <views:AdminView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="160" Background="{DynamicResource SidebarBrush}">
+
+            <Border Background="{DynamicResource PrimaryBrush}" Padding="12" CornerRadius="0 8 8 0">
+                <TextBlock Text="🍴 RESTAURANT" 
+                           FontSize="16" 
+                           FontWeight="Black" 
+                           Foreground="{DynamicResource PrimaryForegroundBrush}" 
+                           FontFamily="Arial" 
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <Button Content="📋 MENU" 
+                    Background="{DynamicResource PrimaryBrush}" 
+                    Margin="10,15,10,5" 
+                    Command="{Binding ShowMenuCommand}" 
+                    FontSize="14" 
+                    FontWeight="Bold" 
+                    Foreground="{DynamicResource PrimaryForegroundBrush}" 
+                    Padding="12,8" 
+                    BorderThickness="0"     
+                    Height="45"/>
+
+            <Button Content="🛒 CART" 
+                    Background="{DynamicResource PrimaryBrush}" 
+                    Margin="10,5" 
+                    Command="{Binding ShowCartCommand}" 
+                    FontSize="14" 
+                    FontWeight="Bold" 
+                    Foreground="{DynamicResource PrimaryForegroundBrush}" 
+                    Padding="12,8" 
+                    BorderThickness="0"     
+                    Height="45"/>
+
+            <Button Content="📅 RESERVE" 
+                    Background="{DynamicResource PrimaryBrush}" 
+                    Margin="10,5" 
+                    Command="{Binding ShowReservationCommand}" 
+                    FontSize="14" 
+                    FontWeight="Bold" 
+                    Foreground="{DynamicResource AccentForegroundBrush}" 
+                    Padding="12,8" 
+                    BorderThickness="0"     
+                    Height="45"/>
+
+            <Button Content="💳 PAYMENT" 
+                    Background="{DynamicResource PrimaryBrush}" 
+                    Margin="10,5" 
+                    Command="{Binding ShowPaymentCommand}" 
+                    FontSize="14" 
+                    FontWeight="Bold" 
+                    Foreground="{DynamicResource DestructiveForegroundBrush}" 
+                    Padding="12,8" 
+                    BorderThickness="0"     
+                    Height="45"/>
+
+            <Button Content="⚙️ ADMIN" 
+                    Background="{DynamicResource PrimaryBrush}" 
+                    Margin="10,5,10,15" 
+                    Command="{Binding ShowAdminCommand}" 
+                    FontSize="14" 
+                    FontWeight="Bold" 
+                    Foreground="{DynamicResource PrimaryForegroundBrush}" 
+                    Padding="12,8" 
+                    BorderThickness="0"     
+                    Height="45"/>
+
+            <Border Background="{DynamicResource CardBrush}" Padding="8" CornerRadius="8" Margin="10,0,10,10">
+                <TextBlock Text="🍽️ Bon Appétit!" 
+                           FontSize="11" 
+                           FontWeight="SemiBold" 
+                           Foreground="{DynamicResource PrimaryBrush}" 
+                           FontFamily="Georgia" 
+                           HorizontalAlignment="Center" 
+                           FontStyle="Italic"/>
+            </Border>
+        </StackPanel>
+
+        <ContentControl Content="{Binding CurrentView}"  />
+    </DockPanel>
+
+</Window>
