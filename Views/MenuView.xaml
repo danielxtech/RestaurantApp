@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="RestaurantApp.Views.MenuView"
+<UserControl x:Class="RestaurantApp.Views.MenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:vm="clr-namespace:RestaurantApp.ViewModels"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,44 +7,90 @@
     <Grid Margin="10" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Categories -->
+
             <RowDefinition Height="*"/>
-            <!-- Menu Items -->
+
         </Grid.RowDefinitions>
 
-        <!-- Categories as horizontal scrollable panel -->
-        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Foreground="#FFFD8B00"  VerticalAlignment="Top" >
+            <ScrollViewer.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFFFFF8"/>
+                    <GradientStop Color="#FFFB4F00"/>
+                    <GradientStop Color="#FF2B2421"/>
+                    <GradientStop Color="#FF030302"/>
+                    <GradientStop Color="#FF030302"/>
+                    <GradientStop Color="#FFEE4B00" Offset="0.397"/>
+                    <GradientStop Color="#FF2F1001"/>
+                    <GradientStop Color="#FFFCE6D6"/>
+                    <GradientStop Color="#FFF6AD88"/>
+                    <GradientStop Color="#FFF5AA84"/>
+                    <GradientStop Color="#FFF38F5F"/>
+                    <GradientStop Color="#FFEF5A16" Offset="0.42"/>
+                </LinearGradientBrush>
+            </ScrollViewer.Background>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <Button Content="All Items" Margin="16" Command="{Binding FilterCommand}" CommandParameter="All"
+                <Button Content="All Items" Margin="26" Command="{Binding FilterCommand}" CommandParameter="All"
                         Background="GreenYellow" Foreground="Black"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
-                <Button Content="   Pasta  " Margin="10" Command="{Binding FilterCommand}" CommandParameter="Pasta"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
-                <Button Content="Appetizers" Margin="10" Command="{Binding FilterCommand}" CommandParameter="Appetizers"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
-                <Button Content=" Burgers  " Margin="10" Command="{Binding FilterCommand}" CommandParameter="Burgers"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
-                <Button Content="   Wraps   " Margin="10" Command="{Binding FilterCommand}" CommandParameter="Wraps"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" Click="Button_Click_1" />
-                <Button Content="  Pizzas  " Margin="10" Command="{Binding FilterCommand}" CommandParameter="Pizza"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
-                <Button Content="  Drinks  " Margin="10" Command="{Binding FilterCommand}" CommandParameter="Drinks"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
-                <Button Content="  Desserts " Margin="10" Command="{Binding FilterCommand}" CommandParameter="Dessert"
-                        Background="{DynamicResource AccentBrush}" Foreground="{DynamicResource AccentForegroundBrush}"
-                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" />
+                        FontWeight="Bold" Padding="8" BorderThickness="0" FontSize="13" RenderTransformOrigin="0.5,0.5" Height="35" >
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="4"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="1E-06"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Pasta"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Width="75" Content="Pasta" Foreground="Black" >
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/downlooad.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Burgers" Foreground="{DynamicResource AccentForegroundBrush}"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Width="75" Height="47" HorizontalAlignment="Center" Content="Burger" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/downloaad.jpg" Stretch="UniformToFill" TileMode="None"/>
+                    </Button.Background>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Wraps" Foreground="#FF0A0A0A"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Click="Button_Click_1" Width="75" Content="Wrap">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/image.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Pizza" Foreground="{DynamicResource AccentForegroundBrush}"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Width="75" Content="Pizza">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/downloads.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Appetizers"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Width="75" Content="Appetizer" Foreground="Black" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/Downloads (2).jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Drinks"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Width="75" Content="Drink" Foreground="White">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/downloadd.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button BorderBrush="Lime" Margin="20" Command="{Binding FilterCommand}" CommandParameter="Dessert" Foreground="Black"
+                        FontWeight="Bold" Padding="8" BorderThickness="1.2" FontSize="13" Width="75" Content="Dessert">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Views/downloaddd.jpg"/>
+                    </Button.Background>
+                </Button>
             </StackPanel>
         </ScrollViewer>
 
         <!-- Menu items in a wrap panel -->
         <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding FilteredMenu}">
+            <ItemsControl ItemsSource="{Binding FilteredMenu}" Foreground="#FFFD8B00" Background="Black" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" IsItemsHost="True" HorizontalAlignment="Center" />
@@ -53,14 +99,14 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="{DynamicResource AccentBrush}" BorderThickness="2" Padding="12" Margin="6" 
-                                Background="{DynamicResource CardBrush}" CornerRadius="12" Width="220">
+                        <Border BorderBrush="Lime" BorderThickness="2" Padding="12" Margin="6" 
+                                Background="GreenYellow" CornerRadius="12" Width="220">
                             <StackPanel>
                                 <Grid>
-                                    <Image Source="{Binding ImagePath}" Width="200" Height="150" Stretch="UniformToFill" />
-                                    <Border Background="{DynamicResource AccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                    <Image Source="{Binding ImagePath}" Width="200" Height="150" Stretch="Uniform" />
+                                    <Border Background="Red" HorizontalAlignment="Right" VerticalAlignment="Top" 
                                             CornerRadius="8" Padding="4" Margin="4">
-                                        <TextBlock Text="{Binding Price, StringFormat=C}" Foreground="{DynamicResource PrimaryForegroundBrush}" FontWeight="Bold" FontSize="12"/>
+                                        <TextBlock Text="{Binding Price, StringFormat=C}" Foreground="White" FontWeight="Bold" FontSize="12"/>
                                     </Border>
                                 </Grid>
 
@@ -75,8 +121,8 @@
                                 <Button Content="➕ Add to Cart" 
                                         Command="{Binding DataContext.AddToCartCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                         CommandParameter="{Binding}" 
-                                        Background="Red"
-                                        Foreground="{DynamicResource PrimaryForegroundBrush}"
+                                        Background="red"
+                                        Foreground="White"
                                         FontWeight="Bold"
                                         Padding="8"
                                         BorderThickness="0"     
